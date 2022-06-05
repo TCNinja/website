@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { NextPage, GetServerSideProps } from 'next';
+import UserCard from './../../components/usercard';
 
 interface IUserProps {
     id: string;
@@ -10,8 +11,7 @@ interface IUserProps {
 const User = ({ userData }: {userData: IUserProps }  ) => {
     if ( userData ) {
         return (<div> 
-            <h2>{ userData.username }</h2>
-            <div>ID: {userData.id}</div> 
+            <UserCard userData={userData} ></UserCard>
             </div>)
     } else return <div>empty</div>;
   
