@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { NextPage, GetServerSideProps } from 'next';
-import UserCard from './../../components/usercard';
+import UserCard from '../../components/usercard';
 
 interface IUserProps {
     id: string;
