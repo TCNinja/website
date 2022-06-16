@@ -1,0 +1,32 @@
+import { useSession, signIn, signOut } from "next-auth/react"
+import Button from "@mui/material/Button";
+import Box from '@mui/material/Box';
+import UserIcon from './user-icon';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
+const UserCard = () => {
+    const { data: session, status } = useSession();
+    if (status === 'unauthenticated') {
+        return (<Button 
+                href={`/api/auth/signin`} 
+                onClick={ (e) => { e.preventDefault();  signIn(); }} >
+                    <b>Sign In</b>
+                </Button>)
+    }
+    if (status === 'authenticated') {
+        const userImgUri: string | undefined = session?.user?.image ? session.user.image : undefined ;
+        return(
+            <Box sx={{
+                display: "flex",
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'flex-end'
+            }}>
+                < UserIcon imgSrc={ userImgUri } />
+                < ArrowDropDownIcon />
+            </Box>
+        
+        );
+    } else return null;
+}
+
+export default UserCard;

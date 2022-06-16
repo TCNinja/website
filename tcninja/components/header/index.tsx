@@ -1,11 +1,9 @@
-import LoginButton from './login-btn'
-import UserIcon from './user-icon'
+import UserCard from './usercard'
 
 const Header = () => {
   return(
     <div>
-      <UserIcon />
-      <LoginButton />
+      <UserCard />
     </div>
   )
 };
