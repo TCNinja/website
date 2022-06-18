@@ -6,7 +6,7 @@ interface IUserIconProps {
 
 const UserIcon = ({imgSrc}:IUserIconProps) => {
 
-        return <Avatar src={imgSrc} />
+        return <Avatar src={imgSrc} color="inherit" />
 }
 
 export default UserIcon;

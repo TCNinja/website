@@ -8,28 +8,28 @@ import IconButton from '@mui/material/IconButton';
 const UserCard = () => {
     const { data: session, status } = useSession();
     if (status === 'unauthenticated') {
-        return (<Button 
-                href={`/api/auth/signin`} 
-                onClick={ (e) => { e.preventDefault();  signIn(); }} >
-                    <b>Sign In</b>
-                </Button>)
+        return (<Button color="inherit"
+            href={`/api/auth/signin`}
+            onClick={(e) => { e.preventDefault(); signIn(); }} >
+            <b>Sign In</b>
+        </Button>)
     }
     if (status === 'authenticated') {
-        const userImgUri: string | undefined = session?.user?.image ? session.user.image : undefined ;
-        return(
+        const userImgUri: string | undefined = session?.user?.image ? session.user.image : undefined;
+        return (
             <Box sx={{
                 display: "flex",
                 flexDirection: { xs: 'column', md: 'row' },
                 alignItems: 'flex-end'
             }}>
-                <IconButton href="/user/123" sx={{ mr: -2  }} >
-                < UserIcon imgSrc={ userImgUri } />
+                <IconButton href="/user/123" sx={{ mr: -2 }} >
+                    < UserIcon imgSrc={userImgUri} />
                 </IconButton>
                 <Box sx={{ mb: -0.8, ml: -0.4 }} >
-                < UserDropDownMenu username={session?.user?.name} />
+                    < UserDropDownMenu username={session?.user?.name} />
                 </Box>
             </Box>
-        
+
         );
     } else return null;
 }
