@@ -2,7 +2,8 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
 import UserIcon from './user-icon';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import UserDropDownMenu from './menu';
+import IconButton from '@mui/material/IconButton';
 
 const UserCard = () => {
     const { data: session, status } = useSession();
@@ -21,8 +22,12 @@ const UserCard = () => {
                 flexDirection: { xs: 'column', md: 'row' },
                 alignItems: 'flex-end'
             }}>
+                <IconButton href="/user/123" sx={{ mr: -2  }} >
                 < UserIcon imgSrc={ userImgUri } />
-                < ArrowDropDownIcon />
+                </IconButton>
+                <Box sx={{ mb: -0.8, ml: -0.4 }} >
+                < UserDropDownMenu username={session?.user?.name} />
+                </Box>
             </Box>
         
         );
