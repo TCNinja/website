@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <Box sx={{ display: 'flex', flexDirection: 'row', flexGrow: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', flexGrow: 1, alignItems: 'center' }}>
           { navigationLinks.map((item, index) => (
             <Link href={item.href} key={index}>
               <Typography variant="h6" component="div" sx={{ m: 1 }} >

@@ -5,6 +5,7 @@ const Home: NextPage = () => {
   console.log('here');
   return (
     <div>
+      This is the Home Page
     </div>
   );
 };
