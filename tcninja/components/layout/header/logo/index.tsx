@@ -1,20 +1,15 @@
-import type { NextComponentType, NextPageContext } from "next";
 import Image from 'next/image';
 
-interface Props {}
-
-const Logo: NextComponentType<NextPageContext, {}, Props> = (
-  props: Props,
-) => {
+const Logo = () => {
   return (
     <div>
         <Image
-         src="/ninja-icon.jpg"
+         src="/temporary-tcn.png"
           alt="TCNinja" 
-          width={40}
-          height={40} />
+          width={100}
+          height={50} />
     </div>
   )
 }
 
-export default Logo
+export default Logo;

@@ -9,7 +9,7 @@ interface ILayoutProps {
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#eabfff"
+      main: "#ffaf1a"
     }
   },
 });
