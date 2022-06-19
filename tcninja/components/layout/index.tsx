@@ -1,25 +1,31 @@
 import Header from './header';
 import Footer from "./footer/footer";
-import { Box, ThemeProvider, createTheme } from '@mui/material';
-import { lightGreen, purple } from '@mui/material/colors';
+import { Box, ThemeProvider, createTheme, makeStyles } from '@mui/material';
+
 
 interface ILayoutProps {
   children: React.ReactNode
 }
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#eabfff"
+    }
+  },
+});
+
+
 
 const Layout = ({ children }: ILayoutProps) => {
-  const theme = createTheme({
-    palette: {
-      primary: purple
-    },
-  });
+  const headerHeight = 65; //TODO: add mobile support
   return (
     <ThemeProvider theme={theme}>
-        <Header />
+        <Header height={headerHeight} />
         <Box sx={{
           display: "flex",
           flexDirection: "column",
-          mt: 9
+          width: '100%',
+          mt: `${headerHeight}px`
         }} >
           <main>{children}</main>
           <Footer />

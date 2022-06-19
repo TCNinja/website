@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import UserCard from './usercard';
 import HeaderSearch from './search'
+import { styled } from '@mui/material';
 
 interface INavigationLinks {
   name: string,
@@ -13,14 +14,21 @@ interface INavigationLinks {
 }
 
 const navigationLinks: INavigationLinks[] = [
-  { name: "About", href: "/" },
   { name: "Home", href: "/" }
 ]
 
-const Header = () => {
+interface IStyledAppBarProps {
+  height: number
+}
+
+const StyledAppBar = styled(AppBar)<IStyledAppBarProps>(({ height }) => ({
+  height: height
+}));
+
+const Header = ({height}: IStyledAppBarProps) => {
 
   return (
-    <AppBar position="fixed">
+    <StyledAppBar position="fixed" height={height}>
       <Toolbar>
         <Box sx={{ display: 'flex', flexDirection: 'row', flexGrow: 1, alignItems: 'center' }}>
           { navigationLinks.map((item, index) => (
@@ -34,7 +42,7 @@ const Header = () => {
       </Box>
       <UserCard />
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
 
   )
 }
