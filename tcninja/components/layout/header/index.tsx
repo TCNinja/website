@@ -33,7 +33,7 @@ const Header = ({height}: IStyledAppBarProps) => {
   return (
     <StyledAppBar position="fixed" height={height}>
       <Toolbar>
-      <IconButton href="./">
+      <IconButton href="/">
       <Logo />
       </IconButton>
         <Box sx={{ display: 'flex', flexDirection: 'row', flexGrow: 1, alignItems: 'center' }}>

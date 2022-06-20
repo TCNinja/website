@@ -9,11 +9,7 @@ interface IUserCardProps {
 const UserCard = ({ userData }: { userData: IUserCardProps }) => {
 
     return (
-        <Box sx={{
-            display: 'flex', flexDirection: "row", justifyContent: 'flex-start', alignItems: 'center' ,
-            bgcolor: 'primary.main', p: 2, border: '2px solid grey',
-            boxShadow: 1, width: 500, fontWeight: 'fontWeightLight'
-        }}>
+        <Box sx={{}}>
             <Avatar alt={userData.username} src={userData.image_uri} />
             <h2>{userData.username}</h2>
             <div>ID: {userData.id}</div>
