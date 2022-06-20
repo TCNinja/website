@@ -11,10 +11,11 @@ interface IUserProps {
     image_uri?: string;
 }
 
-const User = ({ userData }: { userData: IUserProps }) => {
+// const User = ({ userData }: { userData: IUserProps }) => {
+const User = () => {
     const { data: session, status } = useSession();
     const userImage: string | null | undefined = session?.user?.image;
-    if (userData && session) {
+    if (session) {
         return (
             <Box sx={{
                 display: "flex",
@@ -35,7 +36,7 @@ const User = ({ userData }: { userData: IUserProps }) => {
                         flexDirection: 'column',
                         justifyContent: "flex-start"
                     }} >
-                        <Avatar alt={userData.username} src={userImage}
+                        <Avatar src={userImage}
                             sx={{
                                 width: '20rem',
                                 height: '20rem',
@@ -64,32 +65,7 @@ const User = ({ userData }: { userData: IUserProps }) => {
 
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    if (!context.params) {
-        return <h2>404</h2>
-    }
-    const query = Object.values(context.params)[0];
-    const URL = 'https://ddeddd64-0f7a-4585-bb92-085da5426487.mock.pstmn.io'
-    const fURL = `${URL}/user/?id=${query}`
-
-    const options: RequestInit = {
-        method: 'GET',
-        headers: {
-            'x-api-key': 'PMAK-629c72facbc064566cbf6970-f56e8b3cd0bb15d00963f18afc158dc1d2'
-        },
-        mode: 'cors',
-        cache: 'default'
-    }
-
-    const response = await fetch(fURL, options);
-    const data = await response.json();
-    console.log(data)
-
-    return {
-        props: {
-            userData: data,
-        },
-    }
-}
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+// }
 
 export default User;
