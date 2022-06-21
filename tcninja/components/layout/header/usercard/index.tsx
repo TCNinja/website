@@ -25,7 +25,7 @@ const UserCard = () => {
                 <IconButton href="/user/123" sx={{ mr: -2 }} >
                     < UserIcon imgSrc={userImgUri} />
                 </IconButton>
-                <Box sx={{ mb: -0.8, ml: -0.4 }} >
+                <Box >
                     < UserDropDownMenu username={session?.user?.name} />
                 </Box>
             </Box>
