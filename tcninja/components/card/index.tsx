@@ -15,9 +15,10 @@ const Card = ({cardId }: ICardProps) => {
             <Image
             loader={gathererWizardsLoader}
             src={cardId}
+            alt="card"
             width={100}
             height={200}
-            placeholder='blur' 
+            placeholder='blur'
             blurDataURL="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253488&type=card"
             />
         </Box>

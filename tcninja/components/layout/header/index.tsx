@@ -38,8 +38,8 @@ const Header = ({height}: IStyledAppBarProps) => {
       </IconButton>
         <Box sx={{ display: 'flex', flexDirection: 'row', flexGrow: 1, alignItems: 'center' }}>
           { navigationLinks.map((item, index) => (
-            <IconButton>
-            <Link href={item.href} key={index}>
+            <IconButton key={index}>
+            <Link href={item.href} >
               <Typography variant="h6" component="div" sx={{ m: 2 }} >
                 {item.name}
               </Typography>
