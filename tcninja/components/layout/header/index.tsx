@@ -40,7 +40,7 @@ const Header = ({height}: IStyledAppBarProps) => {
           { navigationLinks.map((item, index) => (
             <IconButton key={index}>
             <Link href={item.href} >
-              <Typography variant="h6" component="div" sx={{ m: 2 }} >
+              <Typography variant="h6" fontFamily="Segoe UI" sx={{ m: 2 }} >
                 {item.name}
               </Typography>
             </Link>
