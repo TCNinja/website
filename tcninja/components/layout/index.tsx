@@ -2,7 +2,6 @@ import Header from './header';
 import Footer from "./footer/footer";
 import { Box, ThemeProvider, createTheme, makeStyles } from '@mui/material';
 
-
 interface ILayoutProps {
   children: React.ReactNode
 }
@@ -35,8 +34,8 @@ const Layout = ({ children }: ILayoutProps) => {
           mt: `${headerHeight}px`
         }} >
           <main>{children}</main>
-          <Footer />
         </Box>
+      <Footer />  
     </ThemeProvider>
   )
 }
