@@ -27,16 +27,20 @@ const CardDisplay = ({ id, imageUri, name, details }: ICardDisplayProps) => {
 
 
   return (
-    <div
-      aria-owns={open ? 'mouse-over-popover' : undefined}
-      aria-haspopup="true"
-      onMouseEnter={handlePopoverOpen}
-      onMouseLeave={handlePopoverClose}
+    <div>
+      <Box
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
+        sx={{
+          position: 'sticky',
+          zIndex: 2
+        }}
       >
-      <CardImage
-        imageUri={imageUri}
-        name={name}
-      />
+        <CardImage
+          imageUri={imageUri}
+          name={name}
+        />
+      </Box>
       <Popover
         id="mouse-over-popover"
         open={open}
@@ -50,7 +54,9 @@ const CardDisplay = ({ id, imageUri, name, details }: ICardDisplayProps) => {
           vertical: 'top',
           horizontal: 'left',
         }}
-        disableRestoreFocus
+        sx={{
+          zIndex: 1
+        }}
       >
         Popover Content
       </Popover>
