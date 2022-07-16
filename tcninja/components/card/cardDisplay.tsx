@@ -3,6 +3,7 @@ import CardImage from './cardImage';
 import Popover from '@mui/material/Popover';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 interface ICardDisplayProps {
   id: string,
@@ -58,7 +59,13 @@ const CardDisplay = ({ id, imageUri, name, details }: ICardDisplayProps) => {
           zIndex: 1
         }}
       >
-        Popover Content
+        <Typography variant="h6">{id}</Typography>
+        {Object.keys(details).map((key: string) => {
+          return (
+            <Typography key={key}>
+            </Typography>
+          )
+        })}
       </Popover>
     </div>
   )
