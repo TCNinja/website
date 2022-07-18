@@ -1,23 +1,24 @@
 {
     "users": [
         {
-            "id": 1,
+            "id": "1",
             "username": "admin",
             "imageUri": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
-            "Cardslist": [
+            "cardslist": [
                 {
                     "id": "393943",
                     "imageUri": "",
                     "name": "Ambush Commander",
                     "details": [
                         {
-                            "text" : "Forests you control are 1/1 green Elf creatures that are still lands.\n{1}{G}, Sacrifice an Elf: Target creature gets +3/+3 until end of turn.",
-                            "type" : "Creature — Elf",
+                            "text": "Forests you control are 1/1 green Elf creatures that are still lands.\n{1}{G}, Sacrifice an Elf: Target creature gets +3/+3 until end of turn."
+                        },
+                        {
+                            "type": "Creature — Elf"
+                        },
+                        {
                             "manaCost": "{3}{G}{G}"
-
                         }
-                        
-
                     ]
                 }
             ]

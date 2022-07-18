@@ -3,16 +3,14 @@ import { NextPage, GetServerSideProps } from 'next';
 import { useSession } from "next-auth/react"
 import { Box } from "@mui/system";
 import { Paper, Avatar, Typography } from "@mui/material";
-import UserCard from '../../components/usercard';
+import IUserData from "../../common/user/userData";
 
 interface IUserProps {
-    id: string;
-    username: string;
-    image_uri?: string;
+    userData: IUserData;
 }
 
-// const User = ({ userData }: { userData: IUserProps }) => {
-const User = () => {
+const User = ({ userData }: { userData: IUserProps }) => { 
+// const User = () => {
     const { data: session, status } = useSession();
     const userImage: string | null | undefined = session?.user?.image;
     if (session) {
@@ -65,7 +63,11 @@ const User = () => {
 
 }
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-// }
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { userid } = context.query;
+    const res = await fetch(`http://localhost:3000/api/users/${userid}`);
+    const userData = await res.json();
+    return { props: { userData } }
+}
 
 export default User;

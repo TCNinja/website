@@ -16,6 +16,7 @@ const UserCard = () => {
     }
     if (status === 'authenticated') {
         const username: string | null | undefined = session?.user?.name;
+        const tempUserNumber = "1";
         const userImgUri: string | undefined = session?.user?.image ? session.user.image : undefined;
         return (
             <Box sx={{
@@ -23,7 +24,7 @@ const UserCard = () => {
                 flexDirection: { xs: 'column', md: 'row' },
                 alignItems: 'flex-end'
             }}>
-                <IconButton href={'/user/' + username} sx={{ mr: -2 }} >
+                <IconButton href={'/user/' + tempUserNumber} sx={{ mr: -2 }} >
                     < UserIcon imgSrc={userImgUri} />
                 </IconButton>
                 <Box >
