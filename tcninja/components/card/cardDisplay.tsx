@@ -2,6 +2,8 @@ import React from 'react';
 import CardImage from './cardImage';
 import Popover from '@mui/material/Popover';
 import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
@@ -9,11 +11,20 @@ interface ICardDisplayProps {
   id: string,
   imageUri: string,
   name: string,
-  details: Object
+  [details: string]: string
 }
 
 
 const CardDisplay = ({ id, imageUri, name, details }: ICardDisplayProps) => {
+  const detailsMap: any[] = []; // TODO, unarabize
+  Object.entries(details).forEach(([key, value]) => {
+    detailsMap.push(<ListItem>
+      <Typography>
+        {`${key}: ${value}`}
+      </Typography>
+    </ListItem>)
+  });
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -59,13 +70,10 @@ const CardDisplay = ({ id, imageUri, name, details }: ICardDisplayProps) => {
           zIndex: 1
         }}
       >
-        <Typography variant="h6">{id}</Typography>
-        {Object.keys(details).map((key: string) => {
-          return (
-            <Typography key={key}>
-            </Typography>
-          )
-        })}
+        <Typography variant="h6">Card Details</Typography>
+        <List>
+          {detailsMap}
+        </List>
       </Popover>
     </div>
   )

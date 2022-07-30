@@ -3,16 +3,23 @@ import { NextPage, GetServerSideProps } from 'next';
 import { useSession } from "next-auth/react"
 import { Box } from "@mui/system";
 import { Paper, Avatar, Typography } from "@mui/material";
+import Grid from '@mui/material/Grid';
 import IUserData from "../../common/user/userData";
-
+import CardDisplay from '../../components/card/cardDisplay'
 interface IUserProps {
     userData: IUserData;
 }
 
-const User = ({ userData }: { userData: IUserProps }) => { 
-// const User = () => {
+const User = ({ userData }: { userData: IUserData }) => {
+
+    if (!userData) {
+        const router = useRouter();
+        router.push('/')
+    }
+    console.log(userData)
     const { data: session, status } = useSession();
     const userImage: string | null | undefined = session?.user?.image;
+    const cardsList: any[] = userData.cardsList;
     if (session) {
         return (
             <Box sx={{
@@ -34,7 +41,7 @@ const User = ({ userData }: { userData: IUserProps }) => {
                         flexDirection: 'column',
                         justifyContent: "flex-start"
                     }} >
-                        <Avatar src={userImage}
+                        <Avatar src={userImage!}
                             sx={{
                                 width: '20rem',
                                 height: '20rem',
@@ -54,8 +61,13 @@ const User = ({ userData }: { userData: IUserProps }) => {
                             textAlign: "center",
                             mt: '2rem'
                         }}>
-                            Inventory
+                        Inventory
                     </Typography>
+                    <Box>
+                        {userData.cardsList.map((card) => {
+                            return <CardDisplay id={card.id} imageUri={card.imageUri} name={card.name} details={card.details} />
+                        })}
+                    </Box>
                 </Box>
             </Box>)
 
@@ -66,8 +78,15 @@ const User = ({ userData }: { userData: IUserProps }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { userid } = context.query;
     const res = await fetch(`http://localhost:3000/api/users/${userid}`);
-    const userData = await res.json();
-    return { props: { userData } }
+    if (res) {
+        const userData = await res.json();
+        console.log(userData);
+        return { props: { userData } }
+    } else {
+        return { props: {} }
+    }
+
+
 }
 
 export default User;

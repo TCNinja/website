@@ -9,5 +9,5 @@ interface ICardData {
     id: string;
     imageUri: string;
     name: string;
-    details: Object[];
+    [details: string]: string;
 }
