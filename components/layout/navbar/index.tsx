@@ -1,20 +1,29 @@
 import React from 'react'
-import { Navbar as MantineNavbar } from '@mantine/core'
-import styles from '/styles/navBar.module.css'
-import NavButton from './navButton'
-import { Home } from 'tabler-icons-react'
+import { Navbar as MantineNavbar, Navbar } from '@mantine/core'
+import styles from '/styles/NavbarContent.module.css'
+import NavButton from './navButton';
+import { BrandTinder, Home, Search } from 'tabler-icons-react';
 
-const Navbar = () => {
+const NavbarContent = () => {
   return (
-    <MantineNavbar width={{ sm: 200, lg: 300 }} height='100%' p="xs" className={styles.navbar}>
+    <>
       <MantineNavbar.Section>
-        <NavButton link={"/"}>
-          <Home />
+        <NavButton link="/" icon={<Home/>}>
           Home
         </NavButton>
       </MantineNavbar.Section>
-    </MantineNavbar>
+      <MantineNavbar.Section>
+        <NavButton link="/search" icon={ <Search/> }>
+          Search
+        </NavButton>
+      </MantineNavbar.Section>
+      <MantineNavbar.Section>
+        <NavButton link="/matches" icon={ <BrandTinder/> }>
+          Matches
+        </NavButton>
+      </MantineNavbar.Section>
+    </>
   )
 }
 
-export default Navbar
+export default NavbarContent

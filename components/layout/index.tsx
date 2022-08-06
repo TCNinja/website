@@ -1,25 +1,73 @@
-import React, { ReactNode } from 'react'
-import { AppShell, MantineProvider} from '@mantine/core'
-import Navbar from './navbar'
-import Header from './header'
+import React, { ReactNode, useState } from 'react'
+import {
+  AppShell,
+  Footer,
+  Aside,
+  Text,
+  Navbar,
+  Header,
+  MediaQuery,
+  Burger,
+  useMantineTheme,
+} from '@mantine/core';
+import NavButton from './navbar/navButton';
+import { Home } from 'tabler-icons-react'
+import NavbarContent from './navbar';
+import styles from '/styles/layout.module.css';
 
-export interface LayoutProps  { 
+export interface LayoutProps {
   children: ReactNode
 }
 
-const Layout = ({children}: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
   return (
-      <AppShell
-        padding="sm"
-        styles={(theme) => ({
-          main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] }
-        })}
-        header={<Header />}
-        navbar={<Navbar />}
-        >
+    <AppShell
+      styles={{
+        main: {
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        },
+      }}
+      navbarOffsetBreakpoint="sm"
+      asideOffsetBreakpoint="sm"
+      navbar={
+        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }} id={styles.navbar}>
+          <NavbarContent />
+        </Navbar>
+      }
+      aside={
+        <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+          <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+            <Text>Application sidebar</Text>
+          </Aside>
+        </MediaQuery>
+      }
+      footer={
+        <Footer height={60} p="md">
+          Application footer
+        </Footer>
+      }
+      header={
+        <Header height={70} p="md">
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size="sm"
+                color={theme.colors.gray[6]}
+                mr="xl"
+              />
+            </MediaQuery>
 
-        <main>{children}</main>
-      </AppShell>
+            <Text>Application header</Text>
+          </div>
+        </Header>
+      }
+    >
+      { children }
+    </AppShell>
   )
 }
 

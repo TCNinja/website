@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { ColorSchemeToggle } from './colorSchemeToggle';
 
 
-const Header = () => {
+const HeaderContent = () => {
   return (
-    <MantineHeader height='15%' p="xs">
-      <ColorSchemeToggle />
-    </MantineHeader>
+    <>
+    
+    </>
   )
 }
 
-export default Header
+export default HeaderContent

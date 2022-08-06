@@ -1,0 +1,5 @@
+#navbarButton{
+    width: 100%;
+    display: flex;
+    align-content: flex-start;
+}
