@@ -10,9 +10,8 @@ import {
   Burger,
   useMantineTheme,
 } from '@mantine/core';
-import NavButton from './navbar/navButton';
-import { Home } from 'tabler-icons-react'
 import NavbarContent from './navbar';
+import HeaderContent from './header';
 import styles from '/styles/layout.module.css';
 
 export interface LayoutProps {
@@ -61,7 +60,7 @@ const Layout = ({ children }: LayoutProps) => {
               />
             </MediaQuery>
 
-            <Text>Application header</Text>
+            <HeaderContent />
           </div>
         </Header>
       }

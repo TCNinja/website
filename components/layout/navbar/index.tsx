@@ -1,26 +1,32 @@
 import React from 'react'
-import { Navbar as MantineNavbar, Navbar } from '@mantine/core'
-import styles from '/styles/NavbarContent.module.css'
+import { Navbar as MantineNavbar, ScrollArea, Stack } from '@mantine/core'
 import NavButton from './navButton';
 import { BrandTinder, Home, Search } from 'tabler-icons-react';
+import NavbarHeader from './header';
+import NavbarUser from './user';
+import geraltImage from '/public/geralt.jpg'
 
 const NavbarContent = () => {
   return (
     <>
       <MantineNavbar.Section>
-        <NavButton link="/" icon={<Home/>}>
-          Home
-        </NavButton>
+        <NavbarHeader />
+      </MantineNavbar.Section>
+      <MantineNavbar.Section grow mt="md" component={ScrollArea} >
+        <Stack>
+          <NavButton link="/" icon={<Home />}>
+            Home
+          </NavButton>
+          <NavButton link="/search" icon={<Search />}>
+            Search
+          </NavButton>
+          <NavButton link="/matches" icon={<BrandTinder />}>
+            Matches
+          </NavButton>
+        </Stack>
       </MantineNavbar.Section>
       <MantineNavbar.Section>
-        <NavButton link="/search" icon={ <Search/> }>
-          Search
-        </NavButton>
-      </MantineNavbar.Section>
-      <MantineNavbar.Section>
-        <NavButton link="/matches" icon={ <BrandTinder/> }>
-          Matches
-        </NavButton>
+        <NavbarUser name='Ori Daniel' email='ori.daniel2008@gmail.com' imageUri={geraltImage.src}/>
       </MantineNavbar.Section>
     </>
   )
