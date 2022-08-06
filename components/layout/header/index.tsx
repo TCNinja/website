@@ -1,15 +1,24 @@
 import React from 'react';
-import { Group, Header as MantineHeader} from '@mantine/core';
-import Image from 'next/image';
+import { Title, useMantineTheme, Text, MantineProvider } from '@mantine/core';
+import Link from 'next/link';
 import logo from '/public/ninja-emoji.svg'
 import { ColorSchemeToggle } from './colorSchemeToggle';
 import styles from '/styles/header.module.css'
 
 
 const HeaderContent = () => {
+
+  const theme = useMantineTheme()
+
   return (
     <div className={styles.header} aria-label='Header'>
-      <div></div>
+      <Link href="/" passHref>
+        <Text component="a">
+        <Title order={2}>
+          Trading Card Ninja
+        </Title>
+        </Text>
+      </Link>
     </div>
   )
 }

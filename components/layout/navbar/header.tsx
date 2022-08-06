@@ -1,5 +1,5 @@
 import React from 'react'
-import { Group, ActionIcon, useMantineColorScheme, Box, Text } from '@mantine/core';
+import { Group, ActionIcon, useMantineColorScheme, Box } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons';
 import Image from 'next/image';
 import logo from '/public/ninja-emoji.svg'
@@ -19,7 +19,6 @@ const NavbarHeader = () => {
         >
             <Group position="apart">
                     <Image src={logo} />
-                    <Text>Trading Card Ninja</Text>
                 <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
                     {colorScheme === 'dark' ? <IconSun size={16} /> : <IconMoonStars size={16} />}
                 </ActionIcon>
